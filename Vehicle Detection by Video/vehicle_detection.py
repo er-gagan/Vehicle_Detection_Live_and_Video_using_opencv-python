@@ -3,7 +3,10 @@ import numpy as np
 
 cascade_src = 'cars.xml'
 
-cap = cv2.VideoCapture(0)
+video_src = 'video1.avi'
+# video_src = 'video2.avi'
+
+cap = cv2.VideoCapture(video_src)
 car_cascade = cv2.CascadeClassifier(cascade_src)
 
 while True:
@@ -16,6 +19,7 @@ while True:
     cars = car_cascade.detectMultiScale(color, 1.1, 1)
     s=np.array(cars)
     print("Number of Shape Draw:",s.shape[0])
+    
     for (x,y,w,h) in cars:
         cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
     
